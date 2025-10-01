@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finanças Fácil</title>
+  <link rel="stylesheet" href="estilos/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Controle Financeiro</h1>
+  </header>
+
+  <nav class="navegacao">
+    <button onclick="mostrarSecao('resumo')">Resumo</button>
+    <button onclick="mostrarSecao('graficos')">Gráficos</button>
+    <button onclick="mostrarSecao('transacoes')">Transações</button>
+  </nav>
+
+  <main>
+    <section class="resumo">
+      <div class="card saldo">
+        <h3>Saldo 😐</h3>
+        <p id="saldo">R$ 0,00</p>
+      </div>
+      <div class="card receita">
+        <h3>Receitas</h3>
+        <p id="receitas">R$ 0,00</p>
+      </div>
+      <div class="card despesa">
+        <h3>Despesas</h3>
+        <p id="despesas">R$ 0,00</p>
+      </div>
+      <div class="card economia">
+        <h3>Economia</h3>
+        <p id="economia">R$ 0,00</p>
+      </div>
+    </section>
+
+    <section class="graficos">
+      <div class="chart-container">
+        <canvas id="myChart"></canvas>
+      </div>
+      <div class="chart-container">
+        <canvas id="graficoCategorias"></canvas>
+      </div>
+      <div id="topGastoMessage"></div>
+    </section>
+
+    <section class="transacoes">
+      <h2>Transações Recentes</h2>
+      <ul id="lista-transacoes"></ul>
+      <button id="btn-add" title="Nova Transação">+</button>
+      <button id="btn-exportar">Exportar CSV</button>
+    </section>
+
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <h2>Nova Transação</h2>
+        <form id="form-transacao">
+          <input type="text" id="descricao" placeholder="Descrição" required />
+          <input type="number" id="valor" step="0.01" placeholder="Valor (R$)" required />
+          <input type="date" id="data" required />
+          <select id="categoria" required>
+            <option value="">Categoria</option>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Urgência">Urgência</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Outros">Outros</option>
+          </select>
+          <div class="tipo">
+            <label><input type="radio" name="tipo" value="receita" required /> Receita</label>
+            <label><input type="radio" name="tipo" value="despesa" /> Despesa</label>
+          </div>
+          <div class="botoes">
+            <button type="submit">Salvar</button>
+            <button type="button" id="btn-cancelar">Cancelar</button>
+          </div>
+        </form>
+      </div> 
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
